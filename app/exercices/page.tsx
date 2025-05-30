@@ -5,7 +5,7 @@ import { categories, exercices } from "../data/exercices"
 import CategorieFiltre from "./components/CategorieFiltre"
 import BarreRecherche from "./components/BarreRecherche"
 import FiltreNiveau from "./components/FiltreNiveau"
-import GrilleExercices from "./components/GrilleExercices"
+import CarteExercice from "./components/CarteExercice"
 import Pagination from "./components/Pagination"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageToggle } from "@/components/LanguageToggle"
@@ -142,7 +142,12 @@ export default function PageExercices() {
           </div>
 
           <div className="flex-1 overflow-auto p-4 md:p-6">
-            <GrilleExercices exercices={exercicesPagines} categorieSelectionnee={categorieSelectionnee} />
+            {/* Utilisation directe de CarteExercice au lieu de GrilleExercices */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {exercicesPagines.map((exercice) => (
+                <CarteExercice key={exercice.id} exercice={exercice} />
+              ))}
+            </div>
           </div>
 
           <div className="p-4 md:p-6 border-t">

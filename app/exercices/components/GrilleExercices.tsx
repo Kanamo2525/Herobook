@@ -1,5 +1,6 @@
 "use client"
 
+import CarteExercice from "./CarteExercice"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Clock, Calendar, ExternalLink } from "lucide-react"
@@ -12,6 +13,8 @@ interface Exercise {
   niveau: string
   duree: number
   image?: string
+  icone: any
+  couleur: string
 }
 
 interface GrilleExercicesProps {
@@ -91,29 +94,7 @@ export default function GrilleExercices({ exercices, categorieSelectionnee }: Gr
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {exercices.map((exercice) => (
-        <Card key={exercice.id} className="h-full flex flex-col">
-          <CardContent className="p-4 flex-1 flex flex-col">
-            {exercice.image && (
-              <div className="mb-4">
-                <img
-                  src={exercice.image || "/placeholder.svg"}
-                  alt={exercice.nom}
-                  className="w-full h-32 object-cover rounded-md"
-                />
-              </div>
-            )}
-            <h3 className="font-semibold text-lg mb-2 line-clamp-2">{exercice.nom}</h3>
-            <p className="text-muted-foreground text-sm mb-4 flex-1 line-clamp-3">{exercice.description}</p>
-            <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-              <span className="bg-secondary px-2 py-1 rounded-full">{exercice.niveau}</span>
-              <div className="flex items-center space-x-1">
-                <Clock className="h-4 w-4" />
-                <span>{exercice.duree} min</span>
-              </div>
-            </div>
-            <Button className="w-full">Ajouter au cahier</Button>
-          </CardContent>
-        </Card>
+        <CarteExercice key={exercice.id} exercice={exercice} />
       ))}
     </div>
   )
