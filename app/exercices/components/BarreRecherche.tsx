@@ -1,22 +1,31 @@
 "use client"
 
+import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 
-type BarreRechercheProps = {
+interface BarreRechercheProps {
   onSearch: (query: string) => void
 }
 
 export default function BarreRecherche({ onSearch }: BarreRechercheProps) {
+  const [query, setQuery] = useState("")
+
+  const handleSearch = (value: string) => {
+    setQuery(value)
+    onSearch(value)
+  }
+
   return (
-    <div className="relative w-full">
+    <div className="relative">
+      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
       <Input
         type="text"
-        placeholder="Rechercher des exercices..."
-        className="w-full h-9 md:h-10 pl-9 md:pl-10 pr-3 md:pr-4 text-sm"
-        onChange={(e) => onSearch(e.target.value)}
+        placeholder="Rechercher un exercice..."
+        value={query}
+        onChange={(e) => handleSearch(e.target.value)}
+        className="pl-10"
       />
-      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
     </div>
   )
 }

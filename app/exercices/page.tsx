@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo } from "react"
 import { categories, exercices } from "../data/exercices"
 import CategorieFiltre from "./components/CategorieFiltre"
 import BarreRecherche from "./components/BarreRecherche"
@@ -8,6 +8,7 @@ import FiltreNiveau from "./components/FiltreNiveau"
 import GrilleExercices from "./components/GrilleExercices"
 import Pagination from "./components/Pagination"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageToggle } from "@/components/LanguageToggle"
 import { Button } from "@/components/ui/button"
 import { Book, Settings, Menu, Filter } from "lucide-react"
 import Link from "next/link"
@@ -23,21 +24,6 @@ export default function PageExercices() {
   const [niveauSelectionne, setNiveauSelectionne] = useState("Tout")
   const [pageCourante, setPageCourante] = useState(1)
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Détecter si l'écran est de taille mobile
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
-
-    return () => {
-      window.removeEventListener("resize", checkIfMobile)
-    }
-  }, [])
 
   const exercicesFiltres = useMemo(() => {
     return exercices.filter((exercice) => {
@@ -93,7 +79,7 @@ export default function PageExercices() {
           <div className="p-4 md:p-6 space-y-4 border-b">
             <div className="flex justify-between items-center">
               <div className="flex items-center">
-                {/* Bouton menu pour mobile - Corrigé pour ouvrir le menu */}
+                {/* Bouton menu pour mobile */}
                 <Button
                   variant="outline"
                   size="icon"
@@ -125,11 +111,12 @@ export default function PageExercices() {
                     <span>Administration</span>
                   </Button>
                 </Link>
+                <LanguageToggle />
                 <ThemeToggle />
               </div>
             </div>
 
-            {/* Filtres pour mobile */}
+            {/* Filtres */}
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-grow">
                 <BarreRecherche
@@ -147,7 +134,6 @@ export default function PageExercices() {
                     setPageCourante(1)
                   }}
                 />
-                {/* Bouton filtre pour mobile - Corrigé pour ouvrir le menu */}
                 <Button variant="outline" size="icon" className="md:hidden" onClick={() => setIsMobileFilterOpen(true)}>
                   <Filter className="h-4 w-4" />
                 </Button>

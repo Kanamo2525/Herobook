@@ -1,7 +1,10 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { cn } from "@/lib/utils"
 
-type CategorieFilterProps = {
+interface CategorieFilterProps {
   categories: string[]
   categorieSelectionnee: string
   onSelectCategorie: (categorie: string) => void
@@ -13,24 +16,29 @@ export default function CategorieFiltre({
   onSelectCategorie,
 }: CategorieFilterProps) {
   return (
-    <aside className="w-64 border-r bg-card">
-      <div className="p-6 border-b">
-        <h2 className="font-heading text-lg font-semibold">Catégories</h2>
+    <div className="w-64 border-r bg-card h-full">
+      <div className="p-4 border-b">
+        <h2 className="font-semibold text-lg">Catégories</h2>
       </div>
-      <ScrollArea className="h-[calc(100vh-5rem)]">
-        <div className="p-4">
+      <ScrollArea className="h-[calc(100vh-120px)]">
+        <div className="p-4 space-y-2">
           {categories.map((categorie) => (
             <Button
               key={categorie}
               variant={categorieSelectionnee === categorie ? "default" : "ghost"}
-              className="w-full justify-start text-sm py-2 px-4 mb-1"
+              className={cn(
+                "w-full justify-start text-left h-auto py-3 px-4",
+                categorieSelectionnee === categorie && "bg-primary text-primary-foreground",
+              )}
               onClick={() => onSelectCategorie(categorie)}
             >
-              {categorie}
+              <span className="text-sm leading-relaxed">
+                {categorie === "Les thématiques" ? "Les thématiques" : categorie}
+              </span>
             </Button>
           ))}
         </div>
       </ScrollArea>
-    </aside>
+    </div>
   )
 }

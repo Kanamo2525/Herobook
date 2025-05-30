@@ -1,21 +1,31 @@
+"use client"
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-type FiltreNiveauProps = {
+interface FiltreNiveauProps {
   niveauSelectionne: string
   onSelectNiveau: (niveau: string) => void
 }
 
+const niveaux = [
+  { value: "Tout", label: "Tous les niveaux" },
+  { value: "Débutant", label: "Débutant" },
+  { value: "Intermédiaire", label: "Intermédiaire" },
+  { value: "Avancé", label: "Avancé" },
+]
+
 export default function FiltreNiveau({ niveauSelectionne, onSelectNiveau }: FiltreNiveauProps) {
   return (
     <Select value={niveauSelectionne} onValueChange={onSelectNiveau}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Sélectionner un niveau" />
+      <SelectTrigger className="w-48">
+        <SelectValue placeholder="Tous les niveaux" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="Tout">Tous les niveaux</SelectItem>
-        <SelectItem value="Débutant">Débutant</SelectItem>
-        <SelectItem value="Intermédiaire">Intermédiaire</SelectItem>
-        <SelectItem value="Avancé">Avancé</SelectItem>
+        {niveaux.map((niveau) => (
+          <SelectItem key={niveau.value} value={niveau.value}>
+            {niveau.label}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   )

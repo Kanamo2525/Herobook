@@ -52,14 +52,15 @@ const PreOrderBanner = () => {
           <div className="relative h-32 w-24 md:h-48 md:w-36 shrink-0">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cover%201605_jj-iJjK6rrOeGaC8xMHwndF8HDPedB2nP.png"
-              alt="Couverture du livre Apprendre à se connaître"
+              alt="Couverture du livre Apprendre à se connaître - Développement personnel par Kristy Anamoutou"
               fill
               style={{ objectFit: "cover" }}
               className="rounded"
+              priority
             />
           </div>
           <div className="text-center md:text-left">
-            <h3 className="font-bold text-xl md:text-2xl">APPRENDRE À SE CONNAÎTRE</h3>
+            <h2 className="font-bold text-xl md:text-2xl">APPRENDRE À SE CONNAÎTRE</h2>
             <p className="text-base md:text-lg">Sortie le 16 juin 2025</p>
             <p className="text-sm md:text-base">Disponible en version numérique et papier</p>
           </div>
@@ -96,6 +97,7 @@ const PreOrderBanner = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gray-900 hover:bg-gray-800 text-white py-3 px-6 rounded-md flex items-center gap-2 transition-colors text-base md:text-lg"
+            aria-label="Précommander le livre Apprendre à se connaître sur Amazon"
           >
             <ShoppingCart className="h-4 w-4" />
             <span>Précommander sur Amazon</span>
@@ -120,11 +122,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Cahier d'exercices personnels</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Cahier d'exercices de développement personnel</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Un cahier d'exercices disponible pour accompagner le développement personnel selon les besoins
+            Créez votre cahier d'exercices personnalisé pour accompagner votre développement personnel selon vos besoins
+            spécifiques
           </p>
-          <Link href="/exercices">
+          <Link href="/exercices" aria-label="Découvrir les exercices de développement personnel">
             <Button size="lg" className="text-lg px-8 py-4">
               Découvrir les exercices
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -147,7 +150,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Exercices variés</h3>
                 <p className="text-muted-foreground">
-                  Plus de 13 exercices couvrant différents aspects du développement personnel
+                  Plus de 13 exercices couvrant différents aspects du développement personnel : connaissance de soi,
+                  transformation, croissance intérieure
                 </p>
               </CardContent>
             </Card>
@@ -159,7 +163,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Approche personnalisée</h3>
                 <p className="text-muted-foreground">
-                  Créez votre propre cahier en sélectionnant les exercices qui vous correspondent
+                  Créez votre propre cahier en sélectionnant les exercices qui correspondent à vos objectifs de
+                  développement personnel
                 </p>
               </CardContent>
             </Card>
@@ -171,7 +176,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Partage et collaboration</h3>
                 <p className="text-muted-foreground">
-                  Partagez vos exercices et recevez votre cahier personnalisé par email
+                  Partagez vos exercices et recevez votre cahier personnalisé par email pour un suivi optimal
                 </p>
               </CardContent>
             </Card>
@@ -182,11 +187,14 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-16 px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Prêt à commencer votre parcours ?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Prêt à commencer votre parcours de développement personnel ?
+          </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Explorez notre catalogue d'exercices et créez votre cahier personnalisé dès maintenant.
+            Explorez notre catalogue d'exercices de développement personnel et créez votre cahier personnalisé dès
+            maintenant.
           </p>
-          <Link href="/exercices">
+          <Link href="/exercices" aria-label="Commencer les exercices de développement personnel">
             <Button size="lg" className="text-lg px-8 py-4">
               Commencer maintenant
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -209,7 +217,7 @@ export default function Home() {
               CC BY-SA 4.0
             </a>
           </p>
-          <div className="flex space-x-4">
+          <nav className="flex space-x-4">
             <a
               href="https://kristy-blog.fr/"
               target="_blank"
@@ -221,7 +229,7 @@ export default function Home() {
             <Link href="/exercices" className="text-primary hover:underline text-sm">
               Index des Exercices
             </Link>
-          </div>
+          </nav>
         </div>
       </footer>
     </div>
