@@ -25,7 +25,7 @@ interface GrilleExercicesProps {
 export default function GrilleExercices({ exercices, categorieSelectionnee }: GrilleExercicesProps) {
   // Messages d'attente pour les catégories spécifiques
   const getWaitingMessage = (categorie: string) => {
-    if (categorie === "Décoder" || categorie === "Changer d'état d'esprit") {
+    if (categorie === "Decoder" || categorie === "Décoder" || categorie === "Changer d'état d'esprit") {
       return {
         title: "Exercices en cours de développement",
         description: "Ces exercices seront disponibles à la sortie du Livre 2, actuellement en cours de rédaction.",
