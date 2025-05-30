@@ -8,6 +8,7 @@ import { ArrowLeft, Trash2, Book, Clock, Layout, Target } from "lucide-react"
 import { ActivityRings } from "./components/activity-rings"
 import { LevelBarChart } from "./components/level-bar-chart"
 import { EnvoiCahierForm } from "./components/EnvoiCahierForm"
+import { ImprimerCahier } from "./components/ImprimerCahier"
 
 export default function CahierPage() {
   const { exercicesSelectionnes, retirerDuCahier } = useCahier()
@@ -45,6 +46,40 @@ export default function CahierPage() {
     nombreThematiques: thematiquesUniques.length,
     dureeTotale,
     niveauxCouverts: niveauxData.filter((n) => n.count > 0).map((n) => n.name),
+  }
+
+  if (totalExercices === 0) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="max-w-6xl mx-auto p-4 md:p-6">
+          <div className="flex items-center justify-between mb-4 md:mb-8">
+            <Link
+              href="/exercices"
+              className="inline-flex items-center text-primary hover:underline text-sm md:text-base"
+            >
+              <ArrowLeft className="mr-1 md:mr-2 h-3 w-3 md:h-4 md:w-4" />
+              Retour au catalogue
+            </Link>
+            <h1 className="text-xl md:text-3xl font-heading font-bold">Mon Cahier d'Exercices</h1>
+          </div>
+
+          <Card>
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <Book className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                <h2 className="text-2xl font-bold mb-2">Votre cahier est vide</h2>
+                <p className="text-muted-foreground">
+                  Commencez par sélectionner des exercices dans le catalogue pour créer votre cahier personnalisé.
+                </p>
+              </div>
+              <Link href="/exercices">
+                <Button size="lg">Découvrir les exercices</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -181,12 +216,16 @@ export default function CahierPage() {
           </Card>
         ))}
 
-        <div className="flex flex-col items-end space-y-4 pt-4 md:pt-6">
+        {/* Actions du cahier */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 md:pt-6 border-t">
           <p className="text-sm text-muted-foreground">
             {totalExercices} exercice{totalExercices > 1 ? "s" : ""} sélectionné
             {totalExercices > 1 ? "s" : ""}
           </p>
-          <EnvoiCahierForm exercices={exercicesSelectionnes} metriques={metriques} />
+          <div className="flex flex-col sm:flex-row gap-3">
+            <ImprimerCahier exercices={exercicesSelectionnes} metriques={metriques} />
+            <EnvoiCahierForm exercices={exercicesSelectionnes} metriques={metriques} />
+          </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { Plus, Check, Star, Eye } from "lucide-react"
 import { useCahier } from "../../contexts/CahierContext"
 import type React from "react"
 
-type CarteExerciceProps = {
+interface CarteExerciceProps {
   exercice: Exercice
 }
 
@@ -21,7 +21,7 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
   const estFavori = estDansLesFavoris(exercice.id)
   const Icone = exercice.icone
 
-  const toggleSelection = (e: React.MouseEvent) => {
+  const handleToggleSelection = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     if (estSelectionne) {
@@ -31,7 +31,7 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
     }
   }
 
-  const toggleFavoris = (e: React.MouseEvent) => {
+  const handleToggleFavoris = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     if (estFavori) {
@@ -41,11 +41,13 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
     }
   }
 
-  const couleurFond = exercice.couleur + "20"
-  const favorisClass = estFavori ? "fill-yellow-400 text-yellow-400" : "text-gray-400 hover:text-yellow-400"
-  const boutonClass = estSelectionne
-    ? "bg-green-600 hover:bg-green-700 text-white"
-    : "hover:bg-green-50 border-green-200"
+  const backgroundColorStyle = {
+    backgroundColor: exercice.couleur + "20",
+  }
+
+  const iconColorStyle = {
+    color: exercice.couleur,
+  }
 
   return (
     <div className="group h-full relative">
@@ -56,11 +58,11 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
               <div className="flex-shrink-0">
                 <div
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-colors duration-300"
-                  style={{ backgroundColor: couleurFond }}
+                  style={backgroundColorStyle}
                 >
                   <Icone
                     className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110"
-                    style={{ color: exercice.couleur }}
+                    style={iconColorStyle}
                   />
                 </div>
               </div>
@@ -72,9 +74,15 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
               variant="ghost"
               size="icon"
               className="h-8 w-8 sm:h-9 sm:w-9 flex-shrink-0 hover:bg-yellow-50"
-              onClick={toggleFavoris}
+              onClick={handleToggleFavoris}
             >
-              <Star className={`h-4 w-4 sm:h-5 sm:w-5 transition-colors ${favorisClass}`} />
+              <Star
+                className={
+                  estFavori
+                    ? "h-4 w-4 sm:h-5 sm:w-5 transition-colors fill-yellow-400 text-yellow-400"
+                    : "h-4 w-4 sm:h-5 sm:w-5 transition-colors text-gray-400 hover:text-yellow-400"
+                }
+              />
               <span className="sr-only">{estFavori ? "Retirer des favoris" : "Ajouter aux favoris"}</span>
             </Button>
           </div>
@@ -104,8 +112,12 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
             <Button
               variant={estSelectionne ? "default" : "outline"}
               size="icon"
-              className={`flex-1 h-8 sm:h-9 ${boutonClass}`}
-              onClick={toggleSelection}
+              className={
+                estSelectionne
+                  ? "flex-1 h-8 sm:h-9 bg-green-600 hover:bg-green-700 text-white"
+                  : "flex-1 h-8 sm:h-9 hover:bg-green-50 border-green-200"
+              }
+              onClick={handleToggleSelection}
             >
               {estSelectionne ? (
                 <Check className="h-4 w-4 sm:h-5 sm:w-5" />

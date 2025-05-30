@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import type React from "react"
 import type { Metadata } from "next"
-import { TranslationProvider } from "@/hooks/useTranslation"
 import { generateStructuredData, seoKeywords } from "@/lib/seo"
 
 const fontSans = Newsreader({
@@ -95,12 +94,10 @@ export default function RootLayout({
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <TranslationProvider>
-            <CahierProvider>
-              {children}
-              <Toaster />
-            </CahierProvider>
-          </TranslationProvider>
+          <CahierProvider>
+            {children}
+            <Toaster />
+          </CahierProvider>
         </ThemeProvider>
       </body>
     </html>
