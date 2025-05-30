@@ -130,4 +130,3 @@ export const PDFDownloadButton = ({ exercices }: { exercices: Exercice[] }) => {
     </PDFDownloadLink>
   )
 }
-

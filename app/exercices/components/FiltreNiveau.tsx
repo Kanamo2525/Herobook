@@ -20,4 +20,3 @@ export default function FiltreNiveau({ niveauSelectionne, onSelectNiveau }: Filt
     </Select>
   )
 }
-

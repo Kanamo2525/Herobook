@@ -49,68 +49,71 @@ export default function CahierPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto p-6">
-        <div className="flex items-center justify-between mb-8">
-          <Link href="/exercices" className="inline-flex items-center text-primary hover:underline">
-            <ArrowLeft className="mr-2 h-4 w-4" />
+      <div className="max-w-6xl mx-auto p-4 md:p-6">
+        <div className="flex items-center justify-between mb-4 md:mb-8">
+          <Link
+            href="/exercices"
+            className="inline-flex items-center text-primary hover:underline text-sm md:text-base"
+          >
+            <ArrowLeft className="mr-1 md:mr-2 h-3 w-3 md:h-4 md:w-4" />
             Retour au catalogue
           </Link>
-          <h1 className="text-3xl font-heading font-bold">Mon Cahier d'Exercices</h1>
+          <h1 className="text-xl md:text-3xl font-heading font-bold">Mon Cahier d'Exercices</h1>
         </div>
 
         {/* Section KPIs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-4">
-                <div className="p-2 bg-blue-500/10 rounded-full">
-                  <Book className="h-6 w-6 text-blue-500" />
+            <CardContent className="p-3 md:p-6">
+              <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="p-1 md:p-2 bg-blue-500/10 rounded-full">
+                  <Book className="h-4 w-4 md:h-6 md:w-6 text-blue-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Exercices</p>
-                  <h3 className="text-2xl font-bold text-blue-500">{totalExercices}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">Exercices</p>
+                  <h3 className="text-lg md:text-2xl font-bold text-blue-500">{totalExercices}</h3>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-4">
-                <div className="p-2 bg-green-500/10 rounded-full">
-                  <Layout className="h-6 w-6 text-green-500" />
+            <CardContent className="p-3 md:p-6">
+              <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="p-1 md:p-2 bg-green-500/10 rounded-full">
+                  <Layout className="h-4 w-4 md:h-6 md:w-6 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Thématiques</p>
-                  <h3 className="text-2xl font-bold text-green-500">{thematiquesUniques.length}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">Thématiques</p>
+                  <h3 className="text-lg md:text-2xl font-bold text-green-500">{thematiquesUniques.length}</h3>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-4">
-                <div className="p-2 bg-yellow-500/10 rounded-full">
-                  <Clock className="h-6 w-6 text-yellow-500" />
+            <CardContent className="p-3 md:p-6">
+              <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="p-1 md:p-2 bg-yellow-500/10 rounded-full">
+                  <Clock className="h-4 w-4 md:h-6 md:w-6 text-yellow-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Durée totale</p>
-                  <h3 className="text-2xl font-bold text-yellow-500">{dureeTotale} min</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">Durée totale</p>
+                  <h3 className="text-lg md:text-2xl font-bold text-yellow-500">{dureeTotale} min</h3>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-4">
-                <div className="p-2 bg-purple-500/10 rounded-full">
-                  <Target className="h-6 w-6 text-purple-500" />
+            <CardContent className="p-3 md:p-6">
+              <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="p-1 md:p-2 bg-purple-500/10 rounded-full">
+                  <Target className="h-4 w-4 md:h-6 md:w-6 text-purple-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Niveaux</p>
-                  <h3 className="text-2xl font-bold text-purple-500">
+                  <p className="text-xs md:text-sm text-muted-foreground">Niveaux</p>
+                  <h3 className="text-lg md:text-2xl font-bold text-purple-500">
                     {niveauxData.filter((n) => n.count > 0).length}
                   </h3>
                 </div>
@@ -120,22 +123,22 @@ export default function CahierPage() {
         </div>
 
         {/* Graphiques */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 md:mb-8">
           {/* Anneaux d'activité */}
           <Card>
-            <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-4">Répartition des thématiques</h2>
-              <div className="flex items-center justify-center h-[300px]">
-                <ActivityRings data={thematiquesData} />
+            <CardContent className="p-4 md:p-6">
+              <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4">Répartition des thématiques</h2>
+              <div className="flex items-center justify-center h-[250px] md:h-[300px]">
+                <ActivityRings data={thematiquesData} size={200} />
               </div>
             </CardContent>
           </Card>
 
           {/* Graphique des niveaux */}
           <Card>
-            <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-4">Répartition des niveaux</h2>
-              <div className="h-[300px]">
+            <CardContent className="p-4 md:p-6">
+              <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4">Répartition des niveaux</h2>
+              <div className="h-[250px] md:h-[300px]">
                 <LevelBarChart data={niveauxData} />
               </div>
             </CardContent>
@@ -144,24 +147,24 @@ export default function CahierPage() {
 
         {/* Liste des exercices par thématique */}
         {Object.entries(exercicesParThematique).map(([theme, exercices]) => (
-          <Card key={theme} className="mb-8">
-            <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-4">{theme}</h2>
-              <div className="space-y-4">
+          <Card key={theme} className="mb-4 md:mb-8">
+            <CardContent className="p-4 md:p-6">
+              <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4">{theme}</h2>
+              <div className="space-y-3 md:space-y-4">
                 {exercices.map((exercice) => {
                   const Icone = exercice.icone
                   return (
-                    <div key={exercice.id} className="flex items-center justify-between p-4 bg-muted rounded-lg">
-                      <div className="flex items-center space-x-4">
+                    <div key={exercice.id} className="flex items-center justify-between p-3 md:p-4 bg-muted rounded-lg">
+                      <div className="flex items-center space-x-2 md:space-x-4">
                         <div
-                          className="w-12 h-12 rounded-full flex items-center justify-center"
+                          className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center"
                           style={{ backgroundColor: `${exercice.couleur}20` }}
                         >
-                          <Icone className="w-6 h-6" style={{ color: exercice.couleur }} />
+                          <Icone className="w-4 h-4 md:w-6 md:h-6" style={{ color: exercice.couleur }} />
                         </div>
                         <div>
-                          <h3 className="font-semibold">{exercice.nom}</h3>
-                          <p className="text-sm text-muted-foreground">
+                          <h3 className="text-sm md:text-base font-semibold">{exercice.nom}</h3>
+                          <p className="text-xs md:text-sm text-muted-foreground">
                             {exercice.duree} min • Niveau {exercice.niveau}
                           </p>
                         </div>
@@ -178,8 +181,8 @@ export default function CahierPage() {
           </Card>
         ))}
 
-        <div className="flex flex-col items-end space-y-4 pt-6">
-          <p className="text-muted-foreground">
+        <div className="flex flex-col items-end space-y-4 pt-4 md:pt-6">
+          <p className="text-sm text-muted-foreground">
             {totalExercices} exercice{totalExercices > 1 ? "s" : ""} sélectionné
             {totalExercices > 1 ? "s" : ""}
           </p>
@@ -189,4 +192,3 @@ export default function CahierPage() {
     </div>
   )
 }
-

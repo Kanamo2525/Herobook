@@ -38,4 +38,3 @@ export async function envoyerCahierParEmail(email: string, exercices: any[], met
     throw new Error("Échec de l'envoi de l'email")
   }
 }
-

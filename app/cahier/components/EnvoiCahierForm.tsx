@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -33,19 +35,21 @@ export function EnvoiCahierForm({ exercices, metriques }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto"
+    >
       <Input
         type="email"
         placeholder="Votre adresse e-mail"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="flex-grow"
+        className="flex-grow text-sm"
       />
-      <Button type="submit" disabled={isLoading}>
+      <Button type="submit" disabled={isLoading} className="text-sm">
         {isLoading ? "Envoi en cours..." : "Envoyer le cahier"}
       </Button>
     </form>
   )
 }
-

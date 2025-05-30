@@ -120,4 +120,3 @@ export function ActivityRings({ data, size = 250 }: ActivityRingsProps) {
     </svg>
   )
 }
-

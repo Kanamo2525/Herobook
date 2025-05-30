@@ -70,4 +70,3 @@ export function ChartTooltipContent({ active, payload, label }: TooltipProps<num
     </div>
   )
 }
-

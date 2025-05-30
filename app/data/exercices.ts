@@ -36,6 +36,8 @@ export type Exercice = {
   niveau: "Débutant" | "Intermédiaire" | "Avancé"
   instructions: string[]
   conclusion: string
+  image?: string
+  pdfUrl?: string
 }
 
 export const categories = [
@@ -320,6 +322,7 @@ export const exercices: Exercice[] = [
     couleur: paletteCouleurs[14],
     duree: 60,
     niveau: "Avancé",
+    image: "/images/ligne-temps-onirique.png",
     instructions: [
       "1. Préparation :",
       "- Prenez une grande feuille de papier ou utilisez un tableau pour dessiner une ligne du temps.",
@@ -341,6 +344,97 @@ export const exercices: Exercice[] = [
     ],
     conclusion:
       "Cette ligne du temps onirique vous offre une vision claire et inspirante de votre futur. Revisitez-la régulièrement pour ajuster vos objectifs et maintenir votre motivation à long terme.",
+  },
+  {
+    id: "1012",
+    nom: "Mon parcours du héros",
+    description:
+      "Utilisez le modèle du parcours du héros pour cartographier votre propre transformation personnelle et identifier les étapes clés de votre développement.",
+    categorie: "Devenir un héro",
+    icone: iconeMap.Star,
+    couleur: paletteCouleurs[0],
+    duree: 60,
+    niveau: "Avancé",
+    image: "/images/parcours-du-heros.jpg",
+    pdfUrl: "https://drive.google.com/file/d/1Eae6vEWZYgT525XCyR854CyxydI235it/view?usp=sharing",
+    instructions: [
+      "Téléchargez et imprimez le diagramme du parcours du héros en utilisant le lien PDF fourni.",
+      "Identifiez une transformation personnelle importante que vous avez vécue ou que vous souhaitez vivre.",
+      "Parcourez chaque étape du voyage (1-12) et réfléchissez à comment elle s'applique à votre situation :",
+      "Région du confort habituel : Décrivez votre situation de départ",
+      "Point d'activation du déclencheur : Quel événement a initié le changement ?",
+      "Plateau de résistance au changement : Quelles résistances avez-vous rencontrées ?",
+      "Camp d'entraînement : Comment vous êtes-vous préparé(e) ?",
+      "Accélérateur du leadership : Quels mentors ou guides avez-vous rencontrés ?",
+      "Terrain d'expérimentation : Quelles premières expériences avez-vous tentées ?",
+      "Espace de compréhension : Quelles prises de conscience avez-vous eues ?",
+      "Aire d'amélioration : Comment avez-vous progressé ?",
+      "Zone de nouvelles connaissances : Qu'avez-vous appris de nouveau ?",
+      "Plateformes de transformation : Quel grand changement avez-vous opéré ?",
+      "Place des démonstrations : Comment avez-vous mis en pratique vos acquis ?",
+      "Espace des résultats et célébrations : Quels sont les fruits de votre transformation ?",
+      "Utilisez les espaces de notes du diagramme pour documenter chaque étape de votre parcours.",
+    ],
+    conclusion:
+      "En cartographiant votre parcours du héros, vous prenez conscience de la structure narrative de votre transformation et pouvez mieux anticiper les défis et opportunités des futures aventures de votre vie.",
+  },
+  {
+    id: "1013",
+    nom: "Ma boussole de vie (Ikigai + Cercle d'Or)",
+    description:
+      "Découvrez votre raison d'être en combinant l'approche japonaise de l'Ikigai avec le modèle du Cercle d'Or de Simon Sinek pour créer votre boussole de vie personnelle.",
+    categorie: "Prendre conscience",
+    icone: iconeMap.Compass,
+    couleur: paletteCouleurs[1],
+    duree: 75,
+    niveau: "Intermédiaire",
+    image: "/images/boussole-de-vie.jpg",
+    pdfUrl: "https://drive.google.com/file/d/11_6DYW_ChLdrcgRsrHzo6j4YWnUMGdgi/view?usp=sharing",
+    instructions: [
+      "Téléchargez et imprimez le diagramme de la boussole de vie en utilisant le lien PDF fourni.",
+      "Partie 1 - Votre Ikigai : Remplissez chaque section du diagramme de Venn :",
+      "• Passion : Listez ce que vous aimez faire, vos centres d'intérêt, ce qui vous passionne",
+      "• Profession : Notez ce en quoi vous excellez, vos talents et compétences naturelles",
+      "• Vocation : Identifiez ce dont le monde a besoin et qui vous touche personnellement",
+      "• Mission : Réfléchissez à ce pourquoi le monde pourrait vous rétribuer (financièrement ou autrement)",
+      "• Ikigai (centre) : Synthétisez ce qui émerge à l'intersection de ces quatre domaines",
+      "Partie 2 - Votre Cercle d'Or : Complétez les trois niveaux en partant du centre :",
+      "• Pourquoi (centre) : Votre raison d'être, vos convictions profondes, vos valeurs fondamentales",
+      "• Comment (milieu) : Votre façon unique d'agir, vos méthodes spécifiques, votre style personnel",
+      "• Quoi (extérieur) : Vos réalisations concrètes, vos résultats tangibles, votre impact sur les autres",
+      "Prenez le temps de faire des liens entre votre Ikigai et votre Cercle d'Or.",
+      "Identifiez les cohérences et les éventuelles tensions entre ces deux approches.",
+    ],
+    conclusion:
+      "Cette boussole de vie vous offre une vision claire et structurée de votre raison d'être. Gardez-la à portée de main pour vous guider dans vos décisions importantes et vérifier l'alignement de vos actions avec vos valeurs profondes.",
+  },
+  {
+    id: "1014",
+    nom: "Canevas de développement personnel A3 (Synthèse complète)",
+    description:
+      "Un outil de synthèse complet au format A3 qui combine plusieurs exercices de développement personnel en un seul canevas visuel. Parfait pour avoir une vue d'ensemble de votre parcours et créer votre feuille de route personnalisée.",
+    categorie: "S'accomplir",
+    icone: iconeMap.Target,
+    couleur: paletteCouleurs[0],
+    duree: 90,
+    niveau: "Avancé",
+    image: "/images/canevas-a3.jpg",
+    pdfUrl: "https://drive.google.com/file/d/1YLfEpamB72xLJJC5lDAjDszJC7hCFF9U/view?usp=sharing",
+    instructions: [
+      "Téléchargez et imprimez le canevas A3 en utilisant le lien PDF fourni (format A3 recommandé pour une meilleure lisibilité).",
+      "Préparez un espace de travail calme avec suffisamment de place pour étaler le canevas.",
+      "Munissez-vous de stylos de couleurs différentes pour distinguer les différentes sections.",
+      "Section 1 - Vision et Valeurs : Définissez votre vision de vie et vos valeurs fondamentales.",
+      "Section 2 - Ikigai : Explorez l'intersection entre ce que vous aimez, ce en quoi vous excellez, ce dont le monde a besoin et ce pourquoi vous pouvez être rémunéré.",
+      "Section 3 - Objectifs temporels : Projetez-vous à 1 an, 5 ans et 10 ans avec des objectifs concrets.",
+      "Section 4 - Ressources et soutiens : Identifiez vos forces, compétences et votre réseau de soutien.",
+      "Section 5 - Obstacles et solutions : Anticipez les défis et préparez des stratégies pour les surmonter.",
+      "Section 6 - Actions immédiates : Définissez 3 actions concrètes à mettre en place dans les 30 prochains jours.",
+      "Prenez le temps de faire des liens entre les différentes sections du canevas.",
+      "Une fois complété, affichez votre canevas dans un endroit visible pour vous y référer régulièrement.",
+    ],
+    conclusion:
+      "Ce canevas A3 devient votre tableau de bord personnel pour le développement. Revisitez-le tous les 3 mois pour ajuster vos objectifs et célébrer vos progrès. C'est un outil vivant qui évolue avec vous.",
   },
 ]
 
@@ -385,4 +479,3 @@ function genererExercices(nombre: number): Exercice[] {
 
 export const exercicesGenerated = genererExercices(1000)
 console.log("Nombre d'exercices générés :", exercicesGenerated.length)
-

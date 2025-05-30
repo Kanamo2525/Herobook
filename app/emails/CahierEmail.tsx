@@ -109,4 +109,3 @@ const conclusion = {
   fontStyle: "italic",
   color: "#666666",
 }
-

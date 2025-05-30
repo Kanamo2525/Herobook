@@ -51,4 +51,3 @@ export const LevelBarChart: React.FC<LevelBarChartProps> = ({ data }) => {
     </div>
   )
 }
-
