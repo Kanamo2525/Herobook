@@ -82,6 +82,92 @@ export default function CahierPage() {
     )
   }
 
+  // Vérifier si le cahier contient uniquement des thématiques en attente
+  const thematiquesEnAttente = ["Décoder", "Decoder", "Changer d'état d'esprit", "Se transformer"]
+  const thematiquesDisponibles = thematiquesUniques.filter((theme) => !thematiquesEnAttente.includes(theme))
+  const seulementThematiquesEnAttente = thematiquesUniques.length > 0 && thematiquesDisponibles.length === 0
+
+  // Si le cahier contient uniquement des thématiques en attente, afficher un message
+  if (seulementThematiquesEnAttente) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="max-w-6xl mx-auto p-4 md:p-6">
+          <div className="flex items-center justify-between mb-4 md:mb-8">
+            <Link
+              href="/exercices"
+              className="inline-flex items-center text-primary hover:underline text-sm md:text-base"
+            >
+              <ArrowLeft className="mr-1 md:mr-2 h-3 w-3 md:h-4 md:w-4" />
+              Retour au catalogue
+            </Link>
+            <h1 className="text-xl md:text-3xl font-heading font-bold">Mon Cahier d'Exercices</h1>
+          </div>
+
+          <Card>
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <Clock className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                <h2 className="text-2xl font-bold mb-2">Exercices en cours de préparation</h2>
+                <p className="text-muted-foreground mb-4">
+                  Les thématiques que vous avez sélectionnées sont actuellement en cours de préparation :
+                </p>
+                <div className="space-y-3 mb-6">
+                  {thematiquesUniques.map((theme) => {
+                    if (theme === "Décoder" || theme === "Decoder" || theme === "Changer d'état d'esprit") {
+                      return (
+                        <div key={theme} className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                          <p className="font-medium text-blue-900">{theme}</p>
+                          <p className="text-sm text-blue-700 mb-2">
+                            Ces exercices sont en cours de préparation et seront disponibles fin 2025 avec la
+                            publication du Livre 2.
+                          </p>
+                          <a
+                            href="https://kristy-blog.fr/books/2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-blue-600 hover:text-blue-800 underline"
+                          >
+                            Découvrir le Livre 2 →
+                          </a>
+                        </div>
+                      )
+                    }
+                    if (theme === "Se transformer") {
+                      return (
+                        <div key={theme} className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                          <p className="font-medium text-purple-900">{theme}</p>
+                          <p className="text-sm text-purple-700 mb-2">
+                            Ces exercices seront publiés pour la sortie du Livre 3 en 2026.
+                          </p>
+                          <a
+                            href="https://kristy-blog.fr/books/3"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-purple-600 hover:text-purple-800 underline"
+                          >
+                            Découvrir le Livre 3 →
+                          </a>
+                        </div>
+                      )
+                    }
+                    return null
+                  })}
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                  En attendant, explorez les autres thématiques disponibles pour enrichir votre parcours de
+                  développement personnel.
+                </p>
+              </div>
+              <Link href="/exercices">
+                <Button size="lg">Découvrir les exercices disponibles</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-6xl mx-auto p-4 md:p-6">
@@ -156,90 +242,6 @@ export default function CahierPage() {
             </CardContent>
           </Card>
         </div>
-
-        {/* Vérifier si le cahier contient uniquement des thématiques en attente */}
-        const thematiquesEnAttente = ["Décoder", "Changer d'état d'esprit", "Se transformer"];
-        const thematiquesDisponibles = thematiquesUniques.filter(theme => !thematiquesEnAttente.includes(theme));
-        const seulementThematiquesEnAttente = thematiquesUniques.length > 0 && thematiquesDisponibles.length === 0;
-
-        // Si le cahier contient uniquement des thématiques en attente, afficher un message
-        if (seulementThematiquesEnAttente) {
-          return (
-            <div className="min-h-screen bg-background">
-              <div className="max-w-6xl mx-auto p-4 md:p-6">
-                <div className="flex items-center justify-between mb-4 md:mb-8">
-                  <Link
-                    href="/exercices"
-                    className="inline-flex items-center text-primary hover:underline text-sm md:text-base"
-                  >
-                    <ArrowLeft className="mr-1 md:mr-2 h-3 w-3 md:h-4 md:w-4" />
-                    Retour au catalogue
-                  </Link>
-                  <h1 className="text-xl md:text-3xl font-heading font-bold">Mon Cahier d'Exercices</h1>
-                </div>
-
-                <Card>
-                  <CardContent className="p-8 text-center">
-                    <div className="mb-6">
-                      <Clock className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                      <h2 className="text-2xl font-bold mb-2">Exercices en cours de préparation</h2>
-                      <p className="text-muted-foreground mb-4">
-                        Les thématiques que vous avez sélectionnées sont actuellement en cours de préparation :
-                      </p>
-                      <div className="space-y-3 mb-6">
-                        {thematiquesUniques.map(theme => {
-                          if (theme === "Décoder" || theme === "Changer d'état d'esprit") {
-                            return (
-                              <div key={theme} className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                                <p className="font-medium text-blue-900">{theme}</p>
-                                <p className="text-sm text-blue-700 mb-2">
-                                  Ces exercices sont en cours de préparation et seront disponibles fin 2025 avec la publication du Livre 2.
-                                </p>
-                                <a 
-                                  href="https://kristy-blog.fr/books/2" 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  className="text-sm text-blue-600 hover:text-blue-800 underline"
-                                >
-                                  Découvrir le Livre 2 →
-                                </a>
-                              </div>
-                            )
-                          }
-                          if (theme === "Se transformer") {
-                            return (
-                              <div key={theme} className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                                <p className="font-medium text-purple-900">{theme}</p>
-                                <p className="text-sm text-purple-700 mb-2">
-                                  Ces exercices seront publiés pour la sortie du Livre 3 en 2026.
-                                </p>
-                                <a 
-                                  href="https://kristy-blog.fr/books/3" 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  className="text-sm text-purple-600 hover:text-purple-800 underline"
-                                >
-                                  Découvrir le Livre 3 →
-                                </a>
-                              </div>
-                            )
-                          }
-                          return null
-                        })}
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-6">
-                        En attendant, explorez les autres thématiques disponibles pour enrichir votre parcours de développement personnel.
-                      </p>
-                    </div>
-                    <Link href="/exercices">
-                      <Button size="lg">Découvrir les exercices disponibles</Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          )
-        }
 
         {/* Graphiques */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 md:mb-8">
