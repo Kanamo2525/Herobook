@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart, ArrowRight, Book, Users, Target, Download, Zap } from "lucide-react"
+import { ShoppingCart, ArrowRight, Book, Users, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -111,87 +111,6 @@ const PreOrderBanner = () => {
   )
 }
 
-const CanevaBanner = () => {
-  return (
-    <div className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-8 px-6 shadow-lg">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          {/* Contenu textuel */}
-          <div className="flex-1 text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-              <Zap className="h-6 w-6 text-yellow-300" />
-              <span className="text-sm font-medium uppercase tracking-wide text-yellow-300">
-                Outil de synthèse ultime
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Canevas de développement personnel A3</h2>
-            <p className="text-lg md:text-xl mb-6 opacity-90">
-              Tous vos exercices de développement personnel réunis en un seul outil visuel complet. Créez votre feuille
-              de route personnalisée et gardez une vue d'ensemble de votre parcours.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/exercices/1014">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 font-semibold">
-                  <Target className="mr-2 h-5 w-5" />
-                  Découvrir le canevas
-                </Button>
-              </Link>
-              <a
-                href="https://drive.google.com/file/d/1YLfEpamB72xLJJC5lDAjDszJC7hCFF9U/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-orange-600"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Télécharger PDF
-                </Button>
-              </a>
-            </div>
-          </div>
-
-          {/* Image du canevas */}
-          <div className="flex-shrink-0">
-            <div className="relative w-80 h-56 md:w-96 md:h-64 rounded-lg overflow-hidden shadow-2xl border-4 border-white/20">
-              <Image
-                src="/images/canevas-a3.jpg"
-                alt="Aperçu du canevas de développement personnel A3"
-                fill
-                style={{ objectFit: "cover" }}
-                className="transition-transform duration-300 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
-          </div>
-        </div>
-
-        {/* Statistiques */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/20">
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold">8+</div>
-            <div className="text-sm opacity-80">Outils intégrés</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold">A3</div>
-            <div className="text-sm opacity-80">Format optimal</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold">90min</div>
-            <div className="text-sm opacity-80">Durée recommandée</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold">360°</div>
-            <div className="text-sm opacity-80">Vue complète</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
@@ -214,9 +133,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bannière Canevas A3 */}
-      <CanevaBanner />
-
       {/* Features Section */}
       <section className="py-16 px-4 md:px-6 bg-muted/50">
         <div className="max-w-6xl mx-auto">
@@ -231,7 +147,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Exercices variés</h3>
                 <p className="text-muted-foreground">
-                  Plus de 14 exercices couvrant différents aspects du développement personnel
+                  Plus de 13 exercices couvrant différents aspects du développement personnel
                 </p>
               </CardContent>
             </Card>
