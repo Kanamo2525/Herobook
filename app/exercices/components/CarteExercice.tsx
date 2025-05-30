@@ -53,8 +53,8 @@ export default function CarteExercice({ exercice }: CarteExerciceProps) {
               </div>
             </div>
 
-            {/* Description - cachée sur les très petits écrans */}
-            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 flex-grow line-clamp-3 sm:line-clamp-none">
+            {/* Description - avec limitation de lignes sur tous les écrans */}
+            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 flex-grow line-clamp-3 overflow-hidden">
               {exercice.description}
             </p>
 

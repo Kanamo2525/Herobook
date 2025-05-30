@@ -531,7 +531,9 @@ export const exercices: Exercice[] = [
     couleur: paletteCouleurs[5],
     duree: 60,
     niveau: "Intermédiaire",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-DBMxXfjAO2JXWtVmrj0s6sQj53Itww.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Patrimoine%20culturel.jpg-ynM2plvdoNX4F5MiQQuD3HBfchVuJX.jpeg",
+    pdfUrl: "https://drive.google.com/file/d/1YaHq4DamjG9BL5UhIUl05kCg6FfWClLe/view?usp=sharing",
     instructions: [
       "Préparez votre espace de travail avec une grande feuille de papier ou utilisez un tableau numérique.",
       "Créez quatre colonnes avec ces intitulés :",
