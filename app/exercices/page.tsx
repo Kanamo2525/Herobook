@@ -102,7 +102,11 @@ export default function PageExercices() {
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
-                <h1 className="text-xl md:text-3xl font-heading font-bold">Catalogue d'exercices</h1>
+                <Link href="/">
+                  <h1 className="text-xl md:text-3xl font-heading font-bold hover:text-primary cursor-pointer transition-colors">
+                    Catalogue d'exercices
+                  </h1>
+                </Link>
               </div>
               <div className="flex items-center space-x-2 md:space-x-4">
                 <Link href="/cahier">
@@ -152,7 +156,7 @@ export default function PageExercices() {
           </div>
 
           <div className="flex-1 overflow-auto p-4 md:p-6">
-            <GrilleExercices exercices={exercicesPagines} />
+            <GrilleExercices exercices={exercicesPagines} categorieSelectionnee={categorieSelectionnee} />
           </div>
 
           <div className="p-4 md:p-6 border-t">

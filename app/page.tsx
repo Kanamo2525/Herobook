@@ -120,7 +120,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Playbook Kristy</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Cahier d'exercices personnels</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Un cahier d'exercices disponible pour accompagner le développement personnel selon les besoins
           </p>
