@@ -163,8 +163,29 @@ export default function CahierPage() {
           <Card>
             <CardContent className="p-4 md:p-6">
               <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4">Répartition des thématiques</h2>
-              <div className="flex items-center justify-center h-[250px] md:h-[300px]">
+              <div className="flex items-center justify-center h-[250px] md:h-[300px] relative">
                 <ActivityRings data={thematiquesData} size={200} />
+                {/* Légende des thématiques */}
+                <div className="absolute bottom-2 left-2 text-xs space-y-1">
+                  {thematiquesData.map((theme, index) => {
+                    const colors = [
+                      { ring: "#ff375f" }, // Rouge
+                      { ring: "#30d158" }, // Vert
+                      { ring: "#5e5ce6" }, // Bleu
+                      { ring: "#ffd60a" }, // Jaune
+                      { ring: "#bf5af2" }, // Violet
+                    ]
+                    return (
+                      <div key={theme.name} className="flex items-center gap-2">
+                        <div
+                          className="w-3 h-3 rounded-full"
+                          style={{ backgroundColor: colors[index % colors.length].ring }}
+                        />
+                        <span className="text-muted-foreground">{theme.name}</span>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </CardContent>
           </Card>
