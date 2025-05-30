@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Printer, ExternalLink } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
-import { creerCahierImpression } from "@/app/actions/creerCahierImpression"
 import type { Exercice } from "@/app/data/exercices"
 
 interface ImprimerCahierProps {
@@ -19,12 +18,27 @@ export function ImprimerCahier({ exercices, metriques }: ImprimerCahierProps) {
     setIsLoading(true)
 
     try {
-      // Créer un cahier temporaire et obtenir son ID
-      const exerciceIds = exercices.map((ex) => ex.id)
-      const cahierId = await creerCahierImpression(exerciceIds, metriques)
+      // Créer les données à passer à la page d'impression
+      const printData = {
+        exercices: exercices.map((ex) => ({
+          id: ex.id,
+          nom: ex.nom,
+          description: ex.description,
+          categorie: ex.categorie,
+          duree: ex.duree,
+          niveau: ex.niveau,
+          instructions: ex.instructions,
+          conclusion: ex.conclusion,
+        })),
+        metriques,
+      }
 
-      // Construire l'URL de la page d'impression
-      const printUrl = `/cahier/imprimer/${cahierId}`
+      // Encoder les données en utilisant encodeURIComponent pour gérer les caractères Unicode
+      const jsonString = JSON.stringify(printData)
+      const encodedData = encodeURIComponent(jsonString)
+
+      // Construire l'URL de la page d'impression avec les données
+      const printUrl = `/cahier/imprimer/direct?data=${encodedData}`
 
       // Ouvrir la page d'impression dans un nouvel onglet
       const printWindow = window.open(printUrl, "_blank")
